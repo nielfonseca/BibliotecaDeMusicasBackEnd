@@ -47,6 +47,8 @@ void ExibirOpcoesDoMenu()
 
 }
 
+// Função para Registrar uma banda nova
+// Aprendido: Criar uma lista para adicionar as bandas no dicionário
 void RegistrarBanda()
 {
     Console.Clear();
@@ -60,7 +62,8 @@ void RegistrarBanda()
     ExibirOpcoesDoMenu();
 }
 
-
+// Função para Mostrar todas as Bandas Registradas
+// Aprendido: Percorrer as chaves do dicionário utilizando o .Keys e percorrer o dicionário com foreach 
 void MostrarBandasRegistradas()
 {
     Console.Clear();
@@ -87,17 +90,27 @@ void ExibirTituloDaOpcao(string titulo)
 
 void AvaliarUmaBanda()
 {
-    /*Digitar a banda que deseja avaliar
-    Avaliar se a banda existe, se existir atribuir uma nota.
-    Se não existir, exibir uma mensagem de erro e retornar ao menu principal.*/
+
+
+    // Aprendido: Utilizar o .Add para adicionar um valor a uma determinada chave do dicionário
+    // Aprendido: Verificar se existe a chave no dicionário utilizando o nome dela com o .ContainsKey
+
+    /* O [ ] Serve para indexar o dicionário e acessar as chaves, podendo ir direto para o valor,
+     * utilizando o .Add para atribuir um valor para aquela determinada chave */
 
     Console.Clear();
     ExibirTituloDaOpcao("Avaliar uma banda");
     Console.Write("Digite o nome da banda que deseja avaliar: ");
     string nomeDaBanda = Console.ReadLine()!;
     if (bandasRegistradas.ContainsKey(nomeDaBanda))
-    { 
-    
+    {
+        Console.Write($"Qual a nota você deseja dar para a banda {nomeDaBanda}? Digite: ");
+        int nota = int.Parse(Console.ReadLine()!);
+        bandasRegistradas[nomeDaBanda].Add(nota);
+        Console.WriteLine($"A nota {nota} foi adicionada com sucesso para a banda {nomeDaBanda}!");
+        Thread.Sleep(4000);
+        Console.Clear();
+        ExibirOpcoesDoMenu();
     }
     else
     {
