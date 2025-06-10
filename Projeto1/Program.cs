@@ -3,7 +3,7 @@ string mensagemDeBoasVindas = "Boas Vindas ao Biblio Music!";
 //List<string> listaDasBandas = new List<string> {"Artic Monkeys", "Imagine Dragons", "Black Eyes Peas" };
 
 Dictionary<string, List<int>> bandasRegistradas = new Dictionary<string, List<int>>();
-bandasRegistradas.Add("Artic Monkeys", new List<int> {10, 9, 8});
+bandasRegistradas.Add("Arctic Monkeys", new List<int> {10, 9, 8});
 bandasRegistradas.Add("Imagine Dragons", new List<int>());
 
 void ExibirMensagemDeBoasVindas()
@@ -34,7 +34,7 @@ void ExibirOpcoesDoMenu()
             AvaliarUmaBanda();
             break;
         case 4:
-            Console.WriteLine("Você escolheu exibir a média de uma banda.");
+            MediaDaBanda();
             break;
         case 0:
             Console.WriteLine("Saindo do programa. Até logo!");
@@ -121,6 +121,31 @@ void AvaliarUmaBanda()
         ExibirOpcoesDoMenu();
     }
 }
+
+void MediaDaBanda()
+{
+    Console.Clear();
+    Console.Write("Qual o nome da banda que deseja ver a média?: ");
+    string nomeDaBanda = Console.ReadLine()!;
+    if (bandasRegistradas.ContainsKey(nomeDaBanda))
+    {
+        List<int> notasDaBanda = bandasRegistradas[nomeDaBanda];
+        Console.WriteLine($"\nA média da banda {nomeDaBanda} é {notasDaBanda.Average()}.");
+        Console.WriteLine("Digite uma tecla para voltar ao menu principal");
+        Console.ReadKey();
+        Console.Clear();
+        ExibirOpcoesDoMenu();
+    }
+    else
+    {
+        Console.WriteLine($"A banda '{nomeDaBanda}' não está registrada. Por favor, registre a banda antes de avaliá-la.");
+        Console.WriteLine("Pressione qualquer tecla para voltar ao menu principal.");
+        Console.ReadKey();
+        Console.Clear();
+        ExibirOpcoesDoMenu();
+    }
+}
+
 
 ExibirMensagemDeBoasVindas();
 ExibirOpcoesDoMenu();
