@@ -18,6 +18,7 @@ void ExibirOpcoesDoMenu()
     Console.WriteLine("2 - Mostrar todas a bandas");
     Console.WriteLine("3 - Avaliar uma banda");
     Console.WriteLine("4 - Exibir a média de uma banda");
+    Console.WriteLine("5 - Exibir os detalhes de uma banda");
     Console.WriteLine("0 - Sair");
 
     Console.Write("\nDigite sua Opção: ");
@@ -36,6 +37,8 @@ void ExibirOpcoesDoMenu()
         case 4:
             MediaDaBanda();
             break;
+        case 5:
+            break;
         case 0:
             Console.WriteLine("Saindo do programa. Até logo!");
             Environment.Exit(0);
@@ -46,6 +49,21 @@ void ExibirOpcoesDoMenu()
     }
 
 }
+
+void RegistrarAlbum()
+{
+    Console.Clear();
+    ExibirTituloDaOpcao("Registro de álbuns");
+    Console.Write("Digite a banda cujo álbum deseja registrar: ");
+    string nomeDaBanda = Console.ReadLine()!;
+    Console.Write("\nAgora digite o título do álbum: ");
+
+    Console.WriteLine($"O álbum {tituloAlbum} de {nomeDaBanda} foi registrado com sucesso!");
+    Thread.Sleep(4000);
+    Console.Clear();
+    ExibirOpcoesDoMenu();
+}
+
 
 // Função para Registrar uma banda nova
 // Aprendido: Criar uma lista para adicionar as bandas no dicionário
